@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carnet d'entretien</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Carnet">
+  <meta name="theme-color" content="#2f4f6f">
+  <script>
+    // ⬇️ SEULE LIGNE À MODIFIER : colle entre les guillemets le lien de ton appli (celui qui finit par /exec)
+    const LIEN_APPLI = 'COLLE_ICI_TON_LIEN_EXEC';
+
+    // Ouverture depuis l'icône de l'écran d'accueil (adresse avec ?app=1) : on part directement vers l'appli.
+    if (/[?&]app=1\b/.test(location.search) && /^https:\/\//.test(LIEN_APPLI)) {
+      location.replace(LIEN_APPLI);
+    }
+  </script>
+  <style>
+    body { margin: 0; font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f3f4f6; color: #1f2933; }
+    main { max-width: 520px; margin: 0 auto; padding: 32px 20px 40px; text-align: center; }
+    img.logo { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+    h1 { font-size: 24px; margin: 18px 0 6px; }
+    .btn { display: block; margin: 22px 0; padding: 18px; border-radius: 14px; background: #2f4f6f; color: #fff;
+      font-weight: 700; font-size: 19px; text-decoration: none; }
+    .card { background: #fff; border-radius: 14px; padding: 16px 18px; margin: 14px 0; text-align: left;
+      box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+    .card h2 { font-size: 16px; margin: 0 0 8px; color: #2f4f6f; }
+    ol { margin: 0; padding-left: 20px; } li { margin: 4px 0; }
+    .err { background: #fde8e7; color: #b3261e; border-radius: 12px; padding: 12px; }
+    .muted { color: #6b7280; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="logo" src="icon-512.png" alt="">
+    <h1>Carnet d'entretien</h1>
+    <div class="muted">Le suivi d'entretien de tes véhicules</div>
+    <div id="zone"></div>
+
+    <div class="card">
+      <h2>📱 Mettre l'icône sur l'écran d'accueil</h2>
+      <p><b>iPhone</b> (dans Safari) :</p>
+      <ol><li>Bouton <b>Partager</b> (le carré avec une flèche vers le haut)</li><li><b>Sur l'écran d'accueil</b> → <b>Ajouter</b></li></ol>
+      <p><b>Android</b> (dans Chrome) :</p>
+      <ol><li>Menu <b>⋮</b> en haut à droite</li><li><b>Ajouter à l'écran d'accueil</b> → <b>Ajouter</b></li></ol>
+      <p class="muted">Ensuite, l'icône ouvre directement ton carnet.</p>
+    </div>
+  </main>
+  <script>
+    const zone = document.getElementById('zone');
+    if (!/^https:\/\//.test(LIEN_APPLI)) {
+      zone.innerHTML = '<p class="err">Lien de l\'appli pas encore configuré : modifie la ligne LIEN_APPLI dans index.html.</p>';
+    } else {
+      zone.innerHTML = '<a class="btn" href="' + LIEN_APPLI + '">🔧 Ouvrir mon carnet</a>';
+      // On ajoute ?app=1 à l'adresse SANS recharger la page : c'est cette adresse que le téléphone
+      // enregistre quand on ajoute l'icône, donc l'icône ouvrira ensuite directement l'appli.
+      if (!/[?&]app=1\b/.test(location.search)) history.replaceState(null, '', location.pathname + '?app=1');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d6a94"/><stop offset="1" stop-color="#22394f"/>
+    </linearGradient>
+    <mask id="cle">
+      <rect width="512" height="512" fill="#000"/>
+      <circle cx="256" cy="96" r="64" fill="#fff"/>
+      <rect x="234" y="120" width="44" height="200" rx="20" fill="#fff"/>
+      <rect x="232" y="10" width="48" height="84" rx="8" fill="#000"/>
+    </mask>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- clé plate (orange) en diagonale derrière la voiture -->
+  <g transform="translate(-20 4) rotate(-38 256 230)">
+    <rect width="512" height="512" fill="#f2a03d" mask="url(#cle)"/>
+  </g>
+  <!-- voiture (profil) -->
+  <g transform="translate(0 -14)">
+    <path d="M86 352 q0 -34 30 -44 l46 -14 l44 -50 q14 -16 36 -16 h86 q22 0 36 16 l40 46 l44 12 q32 9 32 42 v26 q0 12 -12 12 h-370 q-12 0 -12 -12 z" fill="#ffffff"/>
+    <path d="M190 292 l32 -36 q8 -8 18 -8 h40 v44 z M300 292 v-44 h38 q10 0 18 8 l32 36 z" fill="#2c4a66"/>
+    <circle cx="170" cy="384" r="40" fill="#22394f"/><circle cx="170" cy="384" r="18" fill="#ffffff"/>
+    <circle cx="344" cy="384" r="40" fill="#22394f"/><circle cx="344" cy="384" r="18" fill="#ffffff"/>
+  </g>
+</svg>
